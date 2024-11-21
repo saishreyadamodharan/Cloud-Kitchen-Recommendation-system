@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cloud Kitchen Food Recommendations</h1>
+    </header>
+    <main>
+        <section class="form-container">
+            <h2>Get Your Food Recommendations</h2>
+            <form id="filters-form">
+                <label for="food-type">Select Food Type:</label>
+                <select id="food-type" name="food-type" required>
+                    <option value="pizza">Pizza</option>
+                    <option value="burger">Burger</option>
+                    <option value="biryani">Biryani</option>
+                    <option value="french-fries">French Fries</option>
+                    <option value="burritos">Burritos</option>
+                </select>
+
+                <label for="cost">Select Cost Range:</label>
+                <select id="cost" name="cost" required>
+                    <option value="low">200-400Rs</option>
+                    <option value="medium">400-800Rs</option>
+                    <option value="high">800-1000Rs</option>
+                    <option value="none"></option>
+                </select>
+
+                <label for="rating">Select Minimum Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+
+                <label for="timing">Select Timing:</label>
+                <select id="timing" name="timing" required>
+                    <option value="Morning">7am-11am</option>
+                    <option value="Noon">12pm-6pm</option>
+                    <option value="Evening">6pm-9pm</option>
+                    <option value="24x7">24 hours</option>
+                </select>
+
+                <button type="submit">Apply Filters</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Cloud Kitchen</p>
+    </footer>
+
+    <script>
+        // Handle form submission and redirect to payment page
+        document.getElementById('filters-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Gather filter values
+            const foodType = document.getElementById('food-type').value;
+            const cost = document.getElementById('cost').value;
+            const rating = document.getElementById('rating').value;
+
+            // Redirect to payment page with selected filters as query parameters
+            window.location.href = `payment.html?food-type=${foodType}&cost=${cost}&rating=${rating}`;
+        });
+    </script>
+</body>
+</html>

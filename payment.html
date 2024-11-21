@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Cloud Kitchen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cloud Kitchen Payment</h1>
+    </header>
+    <main>
+        <section class="form-container">
+            <h2>Make Payment</h2>
+
+            <!-- Display selected filters -->
+            <div id="selected-filters">
+                <p><strong>Food Type:</strong> <span id="food-type-display"></span></p>
+                <p><strong>Cost Range:</strong> <span id="cost-display"></span></p>
+                <p><strong>Minimum Rating:</strong> <span id="rating-display"></span></p>
+            </div>
+
+            <!-- Payment Form -->
+            <form id="payment-form">
+                <label for="payment-amount">Amount to Pay:</label>
+                <input type="number" id="payment-amount" name="payment-amount" required>
+
+                <label for="payment-method">Select Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="google-pay">Google Pay</option>
+                </select>
+
+                <button type="submit">Pay Now</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Cloud Kitchen</p>
+    </footer>
+
+    <script>
+        // Get query parameters and display them
+        const urlParams = new URLSearchParams(window.location.search);
+        const foodType = urlParams.get('food-type');
+        const cost = urlParams.get('cost');
+        const rating = urlParams.get('rating');
+
+        // Display the selected filters
+        document.getElementById('food-type-display').textContent = foodType.charAt(0).toUpperCase() + foodType.slice(1);
+        document.getElementById('cost-display').textContent = cost.charAt(0).toUpperCase() + cost.slice(1);
+        document.getElementById('rating-display').textContent = rating + " Stars";
+
+        // Handle form submission
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Redirect to the payment received page
+            window.location.href = 'paymentreceived.html';
+        });
+    </script>
+</body>
+</html>
